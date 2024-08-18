@@ -1,0 +1,178 @@
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f4f8; /* Lighter background for contrast */
+  margin: 30;
+  padding: 10;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px; /* Increased padding for a more spacious feel */
+  background-color: #ffffff; /* White background for contrast */
+  border-radius: 15px; /* Rounded corners for a softer look */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+}
+
+/* Header and Title */
+header {
+  text-align: center; /* Center align text in header */
+  margin-bottom: 30px; /* Increased margin for separation */
+}
+
+h1 {
+  font-size: 2.5em; /* Larger heading for emphasis */
+  font-weight: 600; /* Bolder text for better visibility */
+  color: #2E8B57; /* Darker green for better contrast */
+}
+
+/* Todo List Styles */
+.todo-container {
+  margin-bottom: 25px; /* Increased margin for spacing */
+  border-radius: 10px;
+  padding: 15px; /* Added padding for better spacing inside */
+  background-color: #ffffff; /* Background color for individual sections */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Light shadow for separation */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align items */
+}
+
+input[type="text"] {
+  width: calc(100% - 50px); /* Adjust width for spacing */
+  padding: 12px; /* Larger padding for comfort */
+  border: 2px solid #4caf50; /* Changed border color for a fresh look */
+  border-radius: 5px;
+  margin-bottom: 15px; /* Added margin bottom for spacing between input and button */
+  font-size: 16px;
+}
+
+button {
+  padding: 12px 24px; /* Increased padding for better click area */
+  background-color: #4caf50; /* Changed background color for consistency */
+  color: #ffffff; /* White text for contrast */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: block; /* Ensure button is displayed as a block for centering */
+  margin-top: 10px; /* Margin top for spacing above the button */
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: #45a049; /* Slightly different shade for hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* List Items */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px; /* Increased padding for comfort */
+  border-bottom: 2px solid #e0e0e0; /* Lighter border for subtle separation */
+  background-color: #ffffff; /* White background for list items */
+}
+
+li:nth-child(even) {
+  background-color: #f9f9f9; /* Lighter background for alternating rows */
+}
+
+li.done {
+  text-decoration: line-through;
+  color: #999; /* Gray color for completed items */
+}
+
+/* Icons */
+.fa-trash, .fa-edit {
+  color: #4caf50; /* Updated icon color to match button */
+  cursor: pointer;
+  margin-left: 15px;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.fa-trash:hover, .fa-edit:hover {
+  color: #e74c3c; /* Red color for hover effect */
+  transform: scale(1.1); /* Slight scale effect on hover */
+}
+
+/* Progress Bar */
+.progress-container {
+  margin: 25px 0; /* Increased margin for spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align progress bar and status */
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #e0e0e0; /* Lighter background for progress bar */
+  border-radius: 20px;
+  overflow: hidden;
+  height: 12px; /* Slightly taller progress bar */
+  margin-top: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background-color: #4caf50; /* Consistent with button color */
+  transition: width 0.4s ease;
+}
+
+.moving-image {
+  width: 200px; /* Adjust width as needed */
+  overflow: hidden; /* Hide overflow if image moves outside its container */
+}
+
+.moving-image img {
+  width: 100%; /* Ensure image scales to fit container */
+  animation: moveRight 5s linear infinite; /* Apply the animation */
+}
+
+/* Keyframes for moving image */
+@keyframes moveRight {
+  0% {
+    transform: translateX(0); /* Start position */
+  }
+  100% {
+    transform: translateX(100%); /* End position (move the image 100% of its own width) */
+  }
+}
+.progress-status {
+  text-align: center; /* Center align progress status text */
+  font-size: 15px; /* Slightly larger font size */
+  color: #333; /* Darker text color for better readability */
+  margin-top: 5px;
+  width: 100%; /* Ensure full width for alignment */
+}
+
+/* Goals Section */
+#weekly-goals-container, #monthly-goals-container {
+  margin-top: 40px; /* Increased margin for separation */
+  text-align: center; /* Center align text in goals containers */
+}
+
+.goal-item {
+  background-color: #ffffff; /* White background for goal items */
+  padding: 20px; /* Increased padding for comfort */
+  border-radius: 10px; /* Rounded corners for a softer look */
+  margin-bottom: 15px; /* Increased margin for spacing */
+  border: 2px solid #4caf50; /* Green border for consistency */
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+}
+
+/* If you want to center the text inside the goal item */
+.goal-item p {
+  text-align: center; /* Center align text inside goal item */
+  margin: 0; /* Remove default margins for consistency */
+}
