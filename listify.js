@@ -1,4 +1,4 @@
-// Access input fields and buttons
+
 const input = document.querySelector('#todo-input');
 const weeklyInput = document.getElementById('weekly-task-input');
 const weeklyButton = document.getElementById('add-weekly-task');
@@ -7,10 +7,9 @@ const monthlyInput = document.getElementById('monthly-task-input');
 const monthlyButton = document.getElementById('add-monthly-task');
 const monthlyGoalsContainer = document.getElementById('monthly-goals-container');
 
-// Function to add a todo item
 const addTodoItem = () => {
   const inputData = input.value.trim();
-  if (inputData === "") return;  // Prevent adding empty items
+  if (inputData === "") return;  
   input.value = "";
 
   const todo_el = document.createElement('div');
@@ -41,12 +40,12 @@ const addTodoItem = () => {
 
   document.querySelector('.todo-lists').appendChild(todo_el);
 
-  // Mark as done
+  
   todo_done_el.addEventListener('click', () => {
     todo_input_el.classList.toggle('done');
   });
 
-  // Edit item
+  
   todo_edit_el.addEventListener('click', () => {
     if (todo_edit_el.classList.contains("edit")) {
       todo_edit_el.classList.remove("edit");
@@ -64,23 +63,19 @@ const addTodoItem = () => {
     }
   });
 
-  // Delete item
   todo_delete_el.addEventListener('click', () => {
     document.querySelector('.todo-lists').removeChild(todo_el);
   });
 };
 
-// Listening to click event from "Add" button.
 document.querySelector('#submit').addEventListener('click', addTodoItem);
 
-// Listening to "Enter" keypress event on the input field.
 input.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
     addTodoItem();
   }
 });
 
-// Function to create a new progress bar element
 function createProgressBar() {
   const progressContainer = document.createElement('div');
   progressContainer.classList.add('progress-tracker');
@@ -102,7 +97,7 @@ function createProgressBar() {
   return { progressContainer, progressFill, progressStatus };
 }
 
-// Function to add a weekly goal
+
 function addWeeklyGoal() {
   const goal = weeklyInput.value.trim();
   if (goal === "") return;
@@ -116,7 +111,7 @@ function addWeeklyGoal() {
   deleteButton.textContent = 'Delete';
   deleteButton.addEventListener('click', () => {
     weeklyGoalsContainer.removeChild(goalWrapper);
-    saveData(); // Update local storage after deletion
+    saveData(); 
   });
 
   const goalWrapper = document.createElement('div');
@@ -126,17 +121,14 @@ function addWeeklyGoal() {
 
   weeklyGoalsContainer.appendChild(goalWrapper);
   weeklyInput.value = "";
-  saveData(); // Save to local storage
-  updateProgressBars(); // Update the progress bars
-
-  // Store data related to the new goal
+  saveData(); 
+  updateProgressBars(); 
   const startDate = new Date().toISOString();
   const weeklyGoals = JSON.parse(localStorage.getItem('weeklyGoals')) || [];
   weeklyGoals.push({ goal, startDate });
   localStorage.setItem('weeklyGoals', JSON.stringify(weeklyGoals));
 }
 
-// Function to add a monthly goal
 function addMonthlyGoal() {
   const goal = monthlyInput.value.trim();
   if (goal === "") return;
@@ -150,7 +142,7 @@ function addMonthlyGoal() {
   deleteButton.textContent = 'Delete';
   deleteButton.addEventListener('click', () => {
     monthlyGoalsContainer.removeChild(goalWrapper);
-    saveData(); // Update local storage after deletion
+    saveData(); 
   });
 
   const goalWrapper = document.createElement('div');
@@ -160,21 +152,17 @@ function addMonthlyGoal() {
 
   monthlyGoalsContainer.appendChild(goalWrapper);
   monthlyInput.value = "";
-  saveData(); // Save to local storage
-  updateProgressBars(); // Update the progress bars
-
-  // Store data related to the new goal
+  saveData(); 
+  updateProgressBars(); 
   const startDate = new Date().toISOString();
   const monthlyGoals = JSON.parse(localStorage.getItem('monthlyGoals')) || [];
   monthlyGoals.push({ goal, startDate });
   localStorage.setItem('monthlyGoals', JSON.stringify(monthlyGoals));
 }
 
-// Function to update all progress bars
 function updateProgressBars() {
   const now = new Date();
 
-  // Update weekly goals progress
   const weeklyGoals = JSON.parse(localStorage.getItem('weeklyGoals')) || [];
   weeklyGoalsContainer.querySelectorAll('.goal-item').forEach((goalContainer, index) => {
     const startDate = new Date(weeklyGoals[index].startDate);
@@ -189,7 +177,7 @@ function updateProgressBars() {
     progressStatus.textContent = `${Math.round(weekProgress)}% Complete`;
   });
 
-  // Update monthly goals progress
+  
   const monthlyGoals = JSON.parse(localStorage.getItem('monthlyGoals')) || [];
   monthlyGoalsContainer.querySelectorAll('.goal-item').forEach((goalContainer, index) => {
     const startDate = new Date(monthlyGoals[index].startDate);
@@ -205,7 +193,6 @@ function updateProgressBars() {
   });
 }
 
-// Function to save data to local storage
 function saveData() {
   const weeklyGoals = [];
   weeklyGoalsContainer.querySelectorAll('.goal-item').forEach(goalContainer => {
@@ -224,7 +211,7 @@ function saveData() {
   localStorage.setItem('monthlyGoals', JSON.stringify(monthlyGoals));
 }
 
-// Function to load data from local storage
+
 function loadData() {
   const savedWeeklyGoals = JSON.parse(localStorage.getItem('weeklyGoals')) || [];
   const savedMonthlyGoals = JSON.parse(localStorage.getItem('monthlyGoals')) || [];
@@ -232,19 +219,19 @@ function loadData() {
   savedWeeklyGoals.forEach(({ goal, startDate }) => {
     weeklyInput.value = goal;
     addWeeklyGoal();
-    weeklyInput.value = ""; // Clear input field after loading
+    weeklyInput.value = ""; 
   });
 
   savedMonthlyGoals.forEach(({ goal, startDate }) => {
     monthlyInput.value = goal;
     addMonthlyGoal();
-    monthlyInput.value = ""; // Clear input field after loading
+    monthlyInput.value = ""; 
   });
 
-  updateProgressBars(); // Update progress bars after loading data
+  updateProgressBars(); 
 }
 
-// Event listeners for the buttons
+
 weeklyButton.addEventListener('click', addWeeklyGoal);
 weeklyInput.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
@@ -259,9 +246,9 @@ monthlyInput.addEventListener('keypress', (event) => {
   }
 });
 
-// Load existing data from local storage on page load
+
 window.addEventListener('load', loadData);
-// Function to clean up undefined goals from the DOM
+
 function cleanUpUndefinedGoals(containerId) {
     let container = document.getElementById(containerId);
     let items = container.getElementsByClassName('goal-item');
@@ -273,11 +260,11 @@ function cleanUpUndefinedGoals(containerId) {
     });
 }
 
-// Function to add a goal (either weekly or monthly)
+
 function addGoal(type, goalText) {
     let goalContainer = type === "weekly" ? document.getElementById("weekly-goals-container") : document.getElementById("monthly-goals-container");
 
-    // Ensure the goal text is not undefined or empty
+    
     if (goalText && goalText !== "undefined") {
         let goalItem = document.createElement("div");
         goalItem.className = "goal-item";
@@ -289,19 +276,18 @@ function addGoal(type, goalText) {
 
         goalContainer.appendChild(goalItem);
 
-        // Adding delete functionality to the delete button
         goalItem.querySelector(".delete-goal-btn").addEventListener("click", function() {
             goalContainer.removeChild(goalItem);
         });
     }
 }
 
-// Add event listeners for the buttons
+
 document.getElementById("add-weekly-goal-btn").addEventListener("click", function() {
     let weeklyGoalInput = document.getElementById("weekly-goal-input").value.trim();
     if (weeklyGoalInput) {
         addGoal("weekly", weeklyGoalInput);
-        document.getElementById("weekly-goal-input").value = ""; // Clear the input field
+        document.getElementById("weekly-goal-input").value = ""; 
     } else {
         alert("Please enter a valid weekly goal.");
     }
@@ -311,13 +297,13 @@ document.getElementById("add-monthly-goal-btn").addEventListener("click", functi
     let monthlyGoalInput = document.getElementById("monthly-goal-input").value.trim();
     if (monthlyGoalInput) {
         addGoal("monthly", monthlyGoalInput);
-        document.getElementById("monthly-goal-input").value = ""; // Clear the input field
+        document.getElementById("monthly-goal-input").value = "";
     } else {
         alert("Please enter a valid monthly goal.");
     }
 });
 
-// Initialize by cleaning up undefined goals
+
 window.onload = function() {
     cleanUpUndefinedGoals("weekly-goals-container");
     cleanUpUndefinedGoals("monthly-goals-container");
