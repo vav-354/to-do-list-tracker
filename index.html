@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listify</title>
+    <link rel="stylesheet" href="listify.css">
+    <script src="https://kit.fontawesome.com/d5f22ee4f8.js" crossorigin="anonymous"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+    
+  </head>
+
+  <body>
+    <div class="main-container">
+      <div class="ta-container">
+        <div class="heading">
+          <h1>Listify</h1>
+        </div>
+        <!--Adding a task-->
+        <div class="ta-wrapper">
+          <div class="input-wrapper">
+            <input type="text" id="todo-input" placeholder="Enter a task..." >
+            <button id="submit">Add</button>
+          </div>
+          <div class="todo-lists">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Weekly Task Section -->
+    <div class="weekly-task-section">
+      <input type="text" id="weekly-task-input" placeholder="Enter your weekly goal..." />
+      <button id="add-weekly-task">Commit to Weekly Goal!</button>
+      <div id="weekly-goals-container"></div>
+    </div>
+
+    <div class="progress-tracker">
+      <h2>Weekly Goal Progress</h2>
+      <div class="progress-bar">
+        <div class="progress-fill" id="weekly-progress-fill"></div>
+      </div>
+      <p id="weekly-progress-status">0% Complete</p>
+      <p id="weekly-goal-status"></p>
+    </div>
+
+    <!-- Monthly Task Section -->
+    <div class="monthly-task-section">
+      <input type="text" id="monthly-task-input" placeholder="Enter your monthly goal..." />
+      <button id="add-monthly-task">Commit to Monthly Goal!</button>
+      <div id="monthly-goals-container"></div>
+      
+    </div>
+    <div class="progress-tracker">
+      <h2>Monthly Goal Progress</h2>
+      <div class="progress-bar">
+        <div class="progress-fill" id="monthly-progress-fill"></div>
+      </div>
+      <p id="monthly-progress-status">0% Complete</p>
+      <p id="monthly-goal-status"></p>
+    </div>
+    
+
+  </body>
+
+
+  <script src="listify.js"></script>
+
+  </html>
+
