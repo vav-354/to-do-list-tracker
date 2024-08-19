@@ -45,7 +45,13 @@ const addTodoItem = () => {
     todo_input_el.classList.toggle('done');
   });
 
-  
+  todo_done_el.addEventListener('click', () => {
+    todo_input_el.classList.toggle('done'); 
+});
+todo_done_el.addEventListener('click', () => {
+  console.log('Check button clicked'); // Add this line to debug
+  todo_input_el.classList.toggle('done');
+});
   todo_edit_el.addEventListener('click', () => {
     if (todo_edit_el.classList.contains("edit")) {
       todo_edit_el.classList.remove("edit");
